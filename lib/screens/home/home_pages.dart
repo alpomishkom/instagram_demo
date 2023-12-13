@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../main.dart';
+import '../userprofile/userprofail_pages.dart';
 
 class HomePages extends StatefulWidget {
   const HomePages({super.key});
@@ -83,18 +84,27 @@ class _HomePagesState extends State<HomePages> {
               ),
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.red,
-                      child: CircleAvatar(
-                        radius: 38,
-                        backgroundImage: NetworkImage(
-                            "http://source.unsplash.com/random/$index"),
-                      ),
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal:4),
+                          child: CircleAvatar(
+                            radius: 40,
+                            backgroundColor: Colors.red,
+                            child: CircleAvatar(
+                              radius: 38,
+                              backgroundImage: NetworkImage(
+                                  "http://source.unsplash.com/random/$index"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Text("Ruffles"),
+                      ],
                     );
                   },
                   scrollDirection: Axis.horizontal,
@@ -115,34 +125,43 @@ class _HomePagesState extends State<HomePages> {
                       child: Column(
                         children: [
                           Expanded(
-                            child: ListTile(
-                              textColor: isChangeTheme.value
-                                  ? CupertinoColors.black
-                                  : Colors.white,
-                              leading: CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.red,
-                                child: CircleAvatar(
-                                  radius: 28,
-                                  backgroundImage: NetworkImage(
-                                    "http://source.unsplash.com/random/$index",
+                            child: InkWell(
+                              child: ListTile(
+                                textColor: isChangeTheme.value
+                                    ? CupertinoColors.black
+                                    : Colors.white,
+                                leading: CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: Colors.red,
+                                  child: CircleAvatar(
+                                    radius: 28,
+                                    backgroundImage: NetworkImage(
+                                      "http://source.unsplash.com/random/$index",
+                                    ),
                                   ),
                                 ),
-                              ),
-                              title: Text(
-                                "Ruffles",
-                                style: GoogleFonts.openSans(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
+                                title: Text(
+                                  "Ruffles",
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                subtitle: const Text("Sponsored"),
+                                trailing: Icon(
+                                  Icons.more_horiz,
+                                  color: isChangeTheme.value
+                                      ? Colors.black
+                                      : Colors.white,
                                 ),
                               ),
-                              subtitle: const Text("Sponsored"),
-                              trailing: Icon(
-                                Icons.more_horiz,
-                                color: isChangeTheme.value
-                                    ? Colors.black
-                                    : Colors.white,
-                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UserProfailPages()));
+                              },
                             ),
                           ),
                           const SizedBox(
@@ -223,7 +242,8 @@ class _HomePagesState extends State<HomePages> {
                                           "Username Lorem ipsum dolor sit amet, consectetur \n adipiscing elit, sed do eiusmod tempor incididunt...",
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 20),
+                                          padding:
+                                              const EdgeInsets.only(top: 20),
                                           child: Text(
                                             "more",
                                             style: GoogleFonts.openSans(
@@ -233,10 +253,12 @@ class _HomePagesState extends State<HomePages> {
                                         ),
                                       ],
                                     ),
-
-                                    Text("View all 16 comments",style: GoogleFonts.openSans(
-                                      color: Color(0xFF6E6E6E),
-                                    ),)
+                                    Text(
+                                      "View all 16 comments",
+                                      style: GoogleFonts.openSans(
+                                        color: Color(0xFF6E6E6E),
+                                      ),
+                                    )
                                   ],
                                 )
                               ],

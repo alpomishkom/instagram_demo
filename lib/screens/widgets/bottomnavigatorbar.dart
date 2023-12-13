@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_i/screens/home/home_pages.dart';
+import 'package:instagram_i/screens/profil/profil_pages.dart';
 import '../../main.dart';
-import '../stake/stake.dart';
-
 class BottomNavigatorBarPages extends StatefulWidget {
   const BottomNavigatorBarPages({super.key});
 
@@ -23,13 +22,12 @@ class _BottomNavigatorBarPagesState extends State<BottomNavigatorBarPages> {
     });
   }
 
-  var _bottomlist = <Widget>[
-    HomePages(),
-    SizedBox(height: double.maxFinite,width: double.maxFinite,child: ColoredBox(color: Colors.red)),
-    StakePages(),
-    SizedBox(height: double.maxFinite,width: double.maxFinite,child: ColoredBox(color: Colors.purple)),
-    SizedBox(height: double.maxFinite,width: double.maxFinite,child: ColoredBox(color: Colors.greenAccent)),
-    SizedBox(height: double.maxFinite,width: double.maxFinite,child: ColoredBox(color: Colors.green)),
+  final _bottomlist = <Widget>[
+    const HomePages(),
+    const HomePages(),
+    const HomePages(),
+    const HomePages(),
+    ProfilPages(),
   ];
 
   @override
